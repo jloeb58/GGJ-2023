@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
+  - Objective_Water
+  - Objective_Soil
+  - Objective_Sunlight
   layers:
   - Default
   - TransparentFX
@@ -14,9 +17,9 @@ TagManager:
   - UI
   - Ground
   - Player
+  - Objectives
   - PostProcessing
   - Not in Reflection
-  - 
   - 
   - 
   - 
