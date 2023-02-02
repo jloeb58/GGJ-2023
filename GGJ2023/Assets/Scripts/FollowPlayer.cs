@@ -22,6 +22,6 @@ public class FollowPlayer : MonoBehaviour
     void Update()
     {
         modifiedPlayerPosition = player.transform.position + new Vector3(0, yHeight);
-        transform.position = Vector3.MoveTowards(transform.position, modifiedPlayerPosition, 0.03f);
+        transform.position = Vector3.MoveTowards(transform.position, modifiedPlayerPosition, 1f);
     }
 }
