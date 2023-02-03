@@ -14,6 +14,10 @@ public class PlayerObjectives : MonoBehaviour
     public GameObject objectiveSoil;
     public GameObject objectiveSunlight;
 
+    // Particle systems will be modified based on objective progress
+    public GameObject rainParticleSystem;
+    public GameObject sunlightParticleSystem;
+
     // Private booleans to help us know if an objective is in the trigger collider
     private bool waterTriggerActive;
     private bool soilTriggerActive;
@@ -31,6 +35,9 @@ public class PlayerObjectives : MonoBehaviour
         objectiveWater.SetActive(true);
         objectiveSoil.SetActive(true);
         objectiveSunlight.SetActive(true);
+
+        // Set particle systems accordingly
+        sunlightParticleSystem.SetActive(false);
 
         // Set booleans to be false at game start
         waterTriggerActive = false;
@@ -99,6 +106,10 @@ public class PlayerObjectives : MonoBehaviour
             objectiveSoil.SetActive(false);
             soilTriggerActive = false;
             soilCollected = true;
+
+            // Deactivate rain and activate ending sunlight
+            rainParticleSystem.GetComponent<ParticleSystem>().Stop();
+            sunlightParticleSystem.SetActive(true);
         }
         else if (sunlightTriggerActive == true)
         {

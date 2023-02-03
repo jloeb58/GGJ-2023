@@ -15,8 +15,8 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   rotation:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 63
     min: 0
     max: 360
   skyIntensityMode:
@@ -53,10 +53,10 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {fileID: 8900000, guid: 762f22ba43541df4e95e0e7126e8d96c, type: 3}
   enableDistortion:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   procedural:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   flowmap:
     m_OverrideState: 0
@@ -65,12 +65,12 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   scrollDirection:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 74
     min: 0
     max: 360
   scrollSpeed:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 2
     min: 0
   enableBackplate:
@@ -192,10 +192,10 @@ MonoBehaviour:
     min: 0
   baseHeight:
     m_OverrideState: 1
-    m_Value: 385.5
+    m_Value: 400
   maximumHeight:
     m_OverrideState: 0
-    m_Value: 1805.8
+    m_Value: 2000
   meanFreePath:
     m_OverrideState: 1
     m_Value: 1000
