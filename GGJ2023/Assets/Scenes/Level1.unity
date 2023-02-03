@@ -5610,6 +5610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sunflower seed
       objectReference: {fileID: 0}
+    - target: {fileID: 5074512353664290214, guid: 2485822b676400445b9bcf02c7a63af2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a752c88229a1dfc44a327f61c9fa78d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2485822b676400445b9bcf02c7a63af2, type: 3}
 --- !u!1 &834402075 stripped
