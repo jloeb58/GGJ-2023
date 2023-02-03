@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Fade : MonoBehaviour
 {
     private Color C;
-    void Start()
+    void OnEnable()
     {
         C = GetComponent<Image>().color;
         StartCoroutine(Fading());
