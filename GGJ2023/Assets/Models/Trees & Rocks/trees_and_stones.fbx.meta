@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: e8776acce17884d4d83431b2abc8ebe1
+guid: da9bfa335b21d3c48ad686710ca99c08
 ModelImporter:
   serializedVersion: 20300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boulder
+    second: {fileID: 2100000, guid: 4a24151805b34074cb137c490fa52de2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dead tree
+    second: {fileID: 2100000, guid: 0875034979fdc1c41847a84c25f26174, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -34,7 +44,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 20
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -85,7 +95,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 20
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
