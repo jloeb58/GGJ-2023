@@ -20,10 +20,29 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		public Animator walkAnim;
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+		void Start() {
+			walkAnim = GetComponent<Animator>();
+		}
+		void Update() {
+			if (walkAnim != null)
+			{
+				if (move.x == 0 && move.y == 0)
+				{
+					walkAnim.SetTrigger("NotWalking");
+				}
+				else
+				{
+					walkAnim.SetTrigger("Walking");
+				}
+			}
+		}
+
 		public void OnMove(InputValue value)
 		{
-			MoveInput(value.Get<Vector2>());
+			MoveInput(value.Get<Vector2>()); 
 		}
 
 		public void OnLook(InputValue value)
