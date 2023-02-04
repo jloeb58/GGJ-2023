@@ -18,6 +18,9 @@ public class PlayerObjectives : MonoBehaviour
     public GameObject rainParticleSystem;
     public GameObject sunlightParticleSystem;
 
+    // Audio Source that plays the rain sound effect
+    public AudioSource rainAudioSource;
+
     // Private booleans to help us know if an objective is in the trigger collider
     private bool waterTriggerActive;
     private bool soilTriggerActive;
@@ -110,6 +113,9 @@ public class PlayerObjectives : MonoBehaviour
             // Deactivate rain and activate ending sunlight
             rainParticleSystem.GetComponent<ParticleSystem>().Stop();
             sunlightParticleSystem.SetActive(true);
+
+            // Fade out rain audio source
+            StartCoroutine(FadeAudioSource.StartFade(rainAudioSource, 2f, 0f));
         }
         else if (sunlightTriggerActive == true)
         {
