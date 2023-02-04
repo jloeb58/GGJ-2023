@@ -167,7 +167,7 @@
       "url": "https://packages.unity.com"
     },
     "me.ameye.prefab-painter": {
-      "version": "file:D:/GGJ2023 Folder/prefab-painter-master/prefab-painter-master",
+      "version": "file:../Prefab Painter/prefab-painter-master/prefab-painter-master",
       "depth": 0,
       "source": "local",
       "dependencies": {}
