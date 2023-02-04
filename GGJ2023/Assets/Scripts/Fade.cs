@@ -17,7 +17,6 @@ public class Fade : MonoBehaviour
         {
             C.a = alpha;
             GetComponent<Image>().color = C;
-            Debug.Log(alpha);
             yield return new WaitForSeconds(.3f);
             if (alpha <=.1f) 
             {
