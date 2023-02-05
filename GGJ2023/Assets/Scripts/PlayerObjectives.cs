@@ -41,9 +41,9 @@ public class PlayerObjectives : MonoBehaviour
     private bool sunlightTriggerActive;
 
     // Private booleans to determine if objectives have been collected or not
-    private bool waterCollected;
-    private bool soilCollected;
-    private bool sunlightCollected;
+    public bool waterCollected;
+    public bool soilCollected;
+    public bool sunlightCollected;
 
     // Start is called before the first frame update
     void Start()
