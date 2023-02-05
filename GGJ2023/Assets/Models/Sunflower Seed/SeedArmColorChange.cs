@@ -5,6 +5,10 @@ using UnityEngine;
 public class SeedArmColorChange : MonoBehaviour
 {
     public PlayerObjectives playerObjective;
+
+    public ParticleSystem waterCollectParticleSystem;
+    public ParticleSystem fertCollectParticleSystem;
+
     private Material seedArmMat;
     private SkinnedMeshRenderer seedArmMesh;
 
@@ -24,17 +28,19 @@ public class SeedArmColorChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerObjective.waterCollected && !waterCollected)
+        if (!waterCollected && playerObjective.waterCollected)
         {
             waterCollected = true;
             seedArmMesh.enabled = true;
-            Invoke("hideArm", 7);
+            waterCollectParticleSystem.Play();
+            Invoke("hideArm", 5);
         }
-        if (playerObjective.soilCollected && !soilCollected)
+        if (!soilCollected && playerObjective.soilCollected)
         {
             soilCollected = true;
             seedArmMesh.enabled = true;
-            Invoke("hideArm", 7);
+            fertCollectParticleSystem.Play();
+            Invoke("hideArm", 5);
         }
     }
 
