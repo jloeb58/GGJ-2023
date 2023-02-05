@@ -103,9 +103,9 @@ public class PlayerObjectives : MonoBehaviour
             waterTriggerActive = false;
             waterCollected = true;
         }
-        else if (soilTriggerActive == true)
+        else if (soilTriggerActive == true && waterCollected == true)
         {
-            Debug.Log("Soil collected");
+            Debug.Log("Fertilizer collected");
             objectiveSoil.SetActive(false);
             soilTriggerActive = false;
             soilCollected = true;
@@ -117,7 +117,7 @@ public class PlayerObjectives : MonoBehaviour
             // Fade out rain audio source
             StartCoroutine(FadeAudioSource.StartFade(rainAudioSource, 2f, 0f));
         }
-        else if (sunlightTriggerActive == true)
+        else if (sunlightTriggerActive == true && waterCollected == true && soilCollected == true)
         {
             Debug.Log("Sunlight collected");
             objectiveSunlight.SetActive(false);
