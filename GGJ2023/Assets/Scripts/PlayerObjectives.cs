@@ -14,6 +14,12 @@ public class PlayerObjectives : MonoBehaviour
     public GameObject objectiveSoil;
     public GameObject objectiveSunlight;
 
+    // Objective Arrows to be hidden/shown
+    public GameObject arrowWater;
+    public GameObject arrowSoil;
+    public GameObject arrowSunlight;
+
+
     // Particle systems will be modified based on objective progress
     public GameObject rainParticleSystem;
     public GameObject sunlightParticleSystem;
@@ -38,6 +44,9 @@ public class PlayerObjectives : MonoBehaviour
         objectiveWater.SetActive(true);
         objectiveSoil.SetActive(true);
         objectiveSunlight.SetActive(true);
+
+        // Set the first objective arrow to true
+        arrowWater.SetActive(true);
 
         // Set particle systems accordingly
         sunlightParticleSystem.SetActive(false);
@@ -96,14 +105,17 @@ public class PlayerObjectives : MonoBehaviour
     {
         Debug.Log("Interact pressed");
         // If a TriggerActive boolean is true for an objective and the "F" key as been pressed, then hide that objective and change Collected boolean to true
-        if (waterTriggerActive == true)
+        if (waterTriggerActive == true && waterCollected == false)
         {
             Debug.Log("Water collected");
-            objectiveWater.SetActive(false);
+            // objectiveWater.SetActive(false);
             waterTriggerActive = false;
             waterCollected = true;
+
+            arrowWater.SetActive(false);
+            arrowSoil.SetActive(true);
         }
-        else if (soilTriggerActive == true && waterCollected == true)
+        else if (soilTriggerActive == true && soilCollected == false && waterCollected == true)
         {
             Debug.Log("Fertilizer collected");
             objectiveSoil.SetActive(false);
@@ -114,6 +126,9 @@ public class PlayerObjectives : MonoBehaviour
             rainParticleSystem.GetComponent<ParticleSystem>().Stop();
             sunlightParticleSystem.SetActive(true);
 
+            arrowSoil.SetActive(false);
+            arrowSunlight.SetActive(true);
+
             // Fade out rain audio source
             StartCoroutine(FadeAudioSource.StartFade(rainAudioSource, 2f, 0f));
         }
@@ -123,6 +138,8 @@ public class PlayerObjectives : MonoBehaviour
             objectiveSunlight.SetActive(false);
             sunlightTriggerActive = false;
             sunlightCollected = true;
+
+            arrowSunlight.SetActive(false);
         }
     }
 

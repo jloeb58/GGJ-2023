@@ -8,6 +8,7 @@ TagManager:
   - Objective_Water
   - Objective_Soil
   - Objective_Sunlight
+  - Objective_Highlighter
   layers:
   - Default
   - TransparentFX
