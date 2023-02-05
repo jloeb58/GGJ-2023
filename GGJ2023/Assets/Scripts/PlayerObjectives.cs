@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.SceneManagement;
 
 // Script for Objective Item Collection functionality, is a component of the Player object
 public class PlayerObjectives : MonoBehaviour
@@ -98,7 +97,7 @@ public class PlayerObjectives : MonoBehaviour
         // If a TriggerActive boolean is true for an objective and the "F" key as been pressed, then hide that objective and change Collected boolean to true
         if (waterTriggerActive == true && waterCollected == false)
         {
-            Debug.Log("Water collected");
+            //Debug.Log("Water collected");
             // objectiveWater.SetActive(false);
             waterTriggerActive = false;
             waterCollected = true;
@@ -109,7 +108,7 @@ public class PlayerObjectives : MonoBehaviour
         }
         else if (soilTriggerActive == true && soilCollected == false && waterCollected == true)
         {
-            Debug.Log("Fertilizer collected");
+            //Debug.Log("Fertilizer collected");
             objectiveSoil.SetActive(false);
             soilTriggerActive = false;
             soilCollected = true;
@@ -120,13 +119,19 @@ public class PlayerObjectives : MonoBehaviour
         }
         else if (sunlightTriggerActive == true && waterCollected == true && soilCollected == true)
         {
-            Debug.Log("Sunlight collected");
-            objectiveSunlight.SetActive(false);
+            //Debug.Log("Sunlight collected");
             sunlightTriggerActive = false;
             sunlightCollected = true;
 
             arrowSunlight.SetActive(false);
+            StartCoroutine(LoadNext());
         }
     }
 
+    // Function to go to next build scene
+    IEnumerator LoadNext()
+    {
+        AsyncOperation loading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        yield return null;
+    }
 }
