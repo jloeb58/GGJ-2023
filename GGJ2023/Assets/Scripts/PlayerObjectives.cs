@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 // Script for Objective Item Collection functionality, is a component of the Player object
 public class PlayerObjectives : MonoBehaviour
@@ -14,9 +16,10 @@ public class PlayerObjectives : MonoBehaviour
     public GameObject objectiveSoil;
     public GameObject objectiveSunlight;
 
-    // Particle systems will be modified based on objective progress
-    public GameObject rainParticleSystem;
-    public GameObject sunlightParticleSystem;
+    // Objective Arrows to be hidden/shown
+    public GameObject arrowWater;
+    public GameObject arrowSoil;
+    public GameObject arrowSunlight;
 
     // Private booleans to help us know if an objective is in the trigger collider
     private bool waterTriggerActive;
@@ -24,9 +27,9 @@ public class PlayerObjectives : MonoBehaviour
     private bool sunlightTriggerActive;
 
     // Private booleans to determine if objectives have been collected or not
-    private bool waterCollected;
-    private bool soilCollected;
-    private bool sunlightCollected;
+    public bool waterCollected;
+    public bool soilCollected;
+    public bool sunlightCollected;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +39,8 @@ public class PlayerObjectives : MonoBehaviour
         objectiveSoil.SetActive(true);
         objectiveSunlight.SetActive(true);
 
-        // Set particle systems accordingly
-        sunlightParticleSystem.SetActive(false);
+        // Set the first objective arrow to true
+        arrowWater.SetActive(true);
 
         // Set booleans to be false at game start
         waterTriggerActive = false;
@@ -93,30 +96,36 @@ public class PlayerObjectives : MonoBehaviour
     {
         Debug.Log("Interact pressed");
         // If a TriggerActive boolean is true for an objective and the "F" key as been pressed, then hide that objective and change Collected boolean to true
-        if (waterTriggerActive == true)
+        if (waterTriggerActive == true && waterCollected == false)
         {
             Debug.Log("Water collected");
-            objectiveWater.SetActive(false);
+            // objectiveWater.SetActive(false);
             waterTriggerActive = false;
             waterCollected = true;
+
+            // New objective arrow
+            arrowWater.SetActive(false);
+            arrowSoil.SetActive(true);
         }
-        else if (soilTriggerActive == true)
+        else if (soilTriggerActive == true && soilCollected == false && waterCollected == true)
         {
-            Debug.Log("Soil collected");
+            Debug.Log("Fertilizer collected");
             objectiveSoil.SetActive(false);
             soilTriggerActive = false;
             soilCollected = true;
 
-            // Deactivate rain and activate ending sunlight
-            rainParticleSystem.GetComponent<ParticleSystem>().Stop();
-            sunlightParticleSystem.SetActive(true);
+            // New objective arrow
+            arrowSoil.SetActive(false);
+            arrowSunlight.SetActive(true);
         }
-        else if (sunlightTriggerActive == true)
+        else if (sunlightTriggerActive == true && waterCollected == true && soilCollected == true)
         {
             Debug.Log("Sunlight collected");
             objectiveSunlight.SetActive(false);
             sunlightTriggerActive = false;
             sunlightCollected = true;
+
+            arrowSunlight.SetActive(false);
         }
     }
 
