@@ -5,18 +5,23 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 public class TimelineDirector : MonoBehaviour
 {
-
+    public static TimelineDirector TD; 
     public PlayableDirector PD;
     public TimelineAsset TL;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        
+        if (TD == null) {
+            TD = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void PlayIt() {
+        PD.Resume();
+    }
+
+    public void PauseIt() {
+        PD.Pause();
     }
 }
