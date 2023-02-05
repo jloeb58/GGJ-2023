@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 // Script for Objective Item Collection functionality, is a component of the Player object
 public class PlayerObjectives : MonoBehaviour
@@ -19,13 +21,19 @@ public class PlayerObjectives : MonoBehaviour
     public GameObject arrowSoil;
     public GameObject arrowSunlight;
 
-
     // Particle systems will be modified based on objective progress
     public GameObject rainParticleSystem;
     public GameObject sunlightParticleSystem;
 
     // Audio Source that plays the rain sound effect
     public AudioSource rainAudioSource;
+
+    // Volume object that we will access the fog effects
+    public Volume fogVolume;
+
+    // Private volume profile objects to access volume profiles (fog, skybox)
+    private VolumeProfile profile;
+    private Fog fogComponent;
 
     // Private booleans to help us know if an objective is in the trigger collider
     private bool waterTriggerActive;
@@ -50,6 +58,14 @@ public class PlayerObjectives : MonoBehaviour
 
         // Set particle systems accordingly
         sunlightParticleSystem.SetActive(false);
+
+        // Activate volume fog
+        profile = fogVolume.sharedProfile;
+        if (profile.TryGet<Fog>(out var fog))
+        {
+            fogComponent = fog;
+            fogComponent.enabled.overrideState = true;
+        }
 
         // Set booleans to be false at game start
         waterTriggerActive = false;
@@ -112,6 +128,7 @@ public class PlayerObjectives : MonoBehaviour
             waterTriggerActive = false;
             waterCollected = true;
 
+            // New objective arrow
             arrowWater.SetActive(false);
             arrowSoil.SetActive(true);
         }
@@ -126,6 +143,15 @@ public class PlayerObjectives : MonoBehaviour
             rainParticleSystem.GetComponent<ParticleSystem>().Stop();
             sunlightParticleSystem.SetActive(true);
 
+            // Deactivate volume fog
+            profile = fogVolume.sharedProfile;
+            if(profile.TryGet<Fog>(out var fog))
+            {
+                fogComponent = fog;
+                fogComponent.enabled.overrideState = false;
+            }
+
+            // New objective arrow
             arrowSoil.SetActive(false);
             arrowSunlight.SetActive(true);
 
