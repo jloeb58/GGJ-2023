@@ -7,7 +7,6 @@ public class TimelineDirector : MonoBehaviour
 {
     public static TimelineDirector TD; 
     public PlayableDirector PD;
-    public TimelineAsset TL;
     // Start is called before the first frame update
 
     private void Awake()
