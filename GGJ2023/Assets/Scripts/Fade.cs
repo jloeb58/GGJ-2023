@@ -13,11 +13,11 @@ public class Fade : MonoBehaviour
     }
 
     IEnumerator Fading() {
-        for (float alpha = 1f; alpha >= 0.0f; alpha -= 0.1f)
+        for (float alpha = 1f; alpha >= 0.0f; alpha -= 0.025f)
         {
             C.a = alpha;
             GetComponent<Image>().color = C;
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(.075f);
             if (alpha <=.1f) 
             {
                 Destroy(gameObject);
